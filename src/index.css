@@ -26,5 +26,5 @@ h1 {
 }
 
 input {
-  @apply px-2 my-3 w-60 border outline-slate-200 rounded-[3px] box-border focus:outline-2
+  @apply px-2 my-2 w-60 border outline-slate-200 rounded-[3px] box-border focus:outline-2
 }
