@@ -2,9 +2,11 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { IRegisterFormData } from "../../../types/forms"
 import { confirmPasswordValidationRules, passwordValidationRules, usernameValidationRules } from "../../../constants/validation"
 import FormErrorMessage from "../../shared/FormErrorMessage"
+import { useAppDispatch } from "../../../hooks"
+import { register as registerAC } from "../../../store/authSlice"
 
 const RegisterForm = () => {
-
+  const dispatch = useAppDispatch()
   const { register, handleSubmit, formState, setError } = useForm<IRegisterFormData>({
     defaultValues: {
       username: "",
@@ -15,10 +17,12 @@ const RegisterForm = () => {
 
   const onSubmit: SubmitHandler<IRegisterFormData> = (values) => {
     if (values.password !== values.confirmPassword) {
-      setError("root", { message: "Passwords doesn't match!" })
+      return setError("root", { message: "Passwords doesn't match!" })
     }
 
-    console.log(values) // plug
+    dispatch(registerAC(values))
+
+    console.log(values ) // plug
   }
 
 	return (
@@ -29,7 +33,6 @@ const RegisterForm = () => {
       <h1 className="mb-8 text-blue-300">Registration</h1>
       
       <FormErrorMessage errors={formState.errors}/>
-      {/* <p className="text-red-500"> { displayError } </p> */}
 
       <input {...register("username", usernameValidationRules)} placeholder="Username"/>
       <input {...register("password", passwordValidationRules)} placeholder="Password"/>
