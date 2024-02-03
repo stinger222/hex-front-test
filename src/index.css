@@ -28,3 +28,33 @@ h1 {
 input {
   @apply px-2 my-2 w-60 border outline-slate-200 rounded-[3px] box-border focus:outline-2
 }
+
+table {
+  @apply w-1/2 mx-auto text-sm text-left rtl:text-right text-gray-500 
+}
+
+thead {
+  @apply text-xs text-gray-700 bg-black uppercase
+}
+
+thead > th  {
+  @apply first:rounded-tl-lg last:rounded-tr-lg text-white text-sm font-bold
+}
+
+tbody {
+  @apply border border-gray-200
+}
+
+tr {
+  @apply bg-white border-b odd:bg-gray-50
+}
+
+th {
+  @apply px-6 py-4 font-medium text-gray-800 whitespace-nowrap
+}
+
+
+td {
+  @apply px-6 py-4
+}
+

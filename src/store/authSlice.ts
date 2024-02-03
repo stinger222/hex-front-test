@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { IAuthState } from "../types/store";
+import { IAuthSliceState } from "../types/store";
 import { LS_TOKEN_KEY } from "../constants/localStorage";
 import { ILoginFormData, IRegisterFormData } from "../types/forms";
 import { api } from "../api";
 
-const initialState: IAuthState = {
+const initialState: IAuthSliceState = {
   isAuthorized: !!localStorage.getItem(LS_TOKEN_KEY)
 }
 
