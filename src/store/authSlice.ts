@@ -59,8 +59,12 @@ export const authSlice = createSlice({
     builder.addCase(register.fulfilled, () => {
       console.log("User registered, redirecting to the login page...")
       location.hash = "#/login"
+    }),
+    builder.addCase(authorize.fulfilled, () => {
+      console.log("User authorized, redirecting to the main page...")
+      location.hash = "#/"
     })
-  },
+  }
 })
 
 export const { logIn } = authSlice.actions

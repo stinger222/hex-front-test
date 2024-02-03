@@ -1,1 +1,1 @@
-export const LS_TOKEN_KEY = "auth-token"
+export const LS_TOKEN_KEY = "hex-auth-token"
