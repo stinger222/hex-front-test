@@ -3,9 +3,11 @@ import { ILoginFormData } from "../../../types/forms"
 import { passwordValidationRules, usernameValidationRules } from "../../../constants/validation"
 import { Link } from "react-router-dom"
 import FormErrorMessage from "../../shared/FormErrorMessage"
+import { authorize } from "../../../store/authSlice"
+import { useAppDispatch } from "../../../hooks"
 
 const LoginForm = () => {
-
+  const dispatch = useAppDispatch()
   const { register, handleSubmit, formState } = useForm<ILoginFormData>({
     defaultValues: {
       username: "",
@@ -15,6 +17,7 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<ILoginFormData> = (values) => {
     console.log(values) // plug
+    dispatch(authorize(values))
   }
 
 	return (
