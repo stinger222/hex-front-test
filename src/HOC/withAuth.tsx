@@ -16,4 +16,6 @@ function withAuth(AuthorizedComponent: () => JSX.Element) {
   }
 }
 
+
+
 export default withAuth

@@ -12,9 +12,7 @@ export const register = createAsyncThunk(
 	"auth/register",
 	async (data: IRegisterFormData, thunkAPI) => {
 		try {
-
-      // await new Promise((resolve) => setTimeout(resolve, 1000))
-      const response = await api
+      await api
         .post<{username: string}>("api/register", undefined, {
           params: {
             username: data.username,
@@ -22,7 +20,6 @@ export const register = createAsyncThunk(
           }
         })
 
-      console.log("response.data.username", response.data.username)
 		} catch (err) {
 			return thunkAPI.rejectWithValue(err)
 		}

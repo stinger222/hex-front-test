@@ -7,24 +7,6 @@ export const MOCK_LINKS: ILink[] = [{
   "counter": 0
 },
 {
-  "id": 153,
-  "short": "FEGTD",
-  "target": "https://developer.school/snippets/react/localstorage-is-not-defined-nextjs",
-  "counter": 0
-},
-{
-  "id": 85,
-  "short": "90DQW",
-  "target": "http://www.godasogle.com",
-  "counter": 0
-},
-{
-  "id": 90,
-  "short": "F4JVT",
-  "target": "https://typescript-handbook.ru/docs/ts-5",
-  "counter": 0
-},
-{
   "id": 93,
   "short": "TY34L",
   "target": "https://typescript-handbook.ru/docs/ts-5",
