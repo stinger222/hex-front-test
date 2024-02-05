@@ -4,7 +4,7 @@ import { passwordValidationRules, usernameValidationRules } from "../../../const
 import { Link } from "react-router-dom"
 import FormErrorMessage from "../../shared/FormErrorMessage"
 import { authorize } from "../../../store/authSlice"
-import { useAppDispatch } from "../../../hooks"
+import { useAppDispatch } from "../../../hooks/store"
 
 const LoginForm = () => {
   const dispatch = useAppDispatch()
@@ -16,7 +16,6 @@ const LoginForm = () => {
   })
 
   const onSubmit: SubmitHandler<ILoginFormData> = (values) => {
-    console.log(values) // plug
     dispatch(authorize(values))
   }
 

@@ -1,7 +1,6 @@
 
 import { RootState } from ".";
 import { api } from "../api";
-import { MOCK_LINKS } from "../constants/mock";
 import { ILink, ILinkSliceState } from "../types/store"
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
@@ -10,7 +9,7 @@ const initialState: ILinkSliceState = {
   isLoading: true,
   pagination: {
     page: 0,
-    pageLimit: 25,
+    pageLimit: 15,
     totalCount: null
   },
   sort: {
@@ -24,17 +23,19 @@ export const fetchLinks = createAsyncThunk(
 	async (_, thunkAPI) => {
 		try {
       const {sort, pagination} = (thunkAPI.getState() as RootState).link
-      console.log("Req new links.\nSorting: ", `${sort.sortDir}_${sort.sortBy}` )
-
       // await new Promise((resolve) => setTimeout(resolve, 1000))
+
       // thunkAPI.dispatch(setLinks(MOCK_LINKS))
-
+      // thunkAPI.dispatch(setTotalLinksCount(502))
+      
       const response = await api
-        .get<ILink[]>("api/statistics", { params: {
-          limit: pagination.pageLimit,
-          order: `${sort.sortDir}_${sort.sortBy}`
+      .get<ILink[]>("api/statistics", { params: {
+        limit: pagination.pageLimit,
+        order: `${sort.sortDir}_${sort.sortBy}`,
+        offset: pagination.page * pagination.pageLimit
         }})
-
+        
+      thunkAPI.dispatch(setTotalLinksCount(response.headers["x-total-count"]))
       thunkAPI.dispatch(setLinks(response.data))
 		} catch (err) {
 			return thunkAPI.rejectWithValue(err)
@@ -48,12 +49,17 @@ export const linkSlice = createSlice({
   reducers: {
     setLinks: (state, payload: PayloadAction<ILink[]>) => {
       state.links = payload.payload
-      console.log("New links mounted: ", payload.payload)
     },
     setSort: (state, payload: PayloadAction<"short" | "target" | "counter">) => {
       state.sort.sortBy = payload.payload
       state.sort.sortDir = state.sort.sortDir === "asc" ? "desc" : "asc"
-    }
+    },
+    setTotalLinksCount: (state, payload: PayloadAction<number>) => {
+      state.pagination.totalCount = payload.payload
+    },
+    setPage: (state, payload: PayloadAction<number>) => {
+      state.pagination.page = payload.payload
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchLinks.pending, (state) => {
@@ -68,6 +74,6 @@ export const linkSlice = createSlice({
   }
 })
 
-export const { setLinks, setSort } = linkSlice.actions
+export const { setLinks, setSort, setTotalLinksCount, setPage} = linkSlice.actions
 
 export default linkSlice.reducer

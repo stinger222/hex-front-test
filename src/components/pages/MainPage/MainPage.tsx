@@ -1,9 +1,10 @@
 import { useEffect } from "react"
 import withAuth from "../../../HOC/withAuth"
-import { useAppDispatch, useAppSelector } from "../../../hooks"
+import { useAppDispatch, useAppSelector } from "../../../hooks/store"
 import { fetchLinks } from "../../../store/linkSlice"
 import Loader from "../../shared/Loader/Loader"
 import LinksTable from "../../smart/LinksTable/LinksTable"
+import Pagination from "../../smart/Pagination/Pagination"
 
 const MainPage = withAuth(() => {
   const dispatch = useAppDispatch()
@@ -19,8 +20,11 @@ const MainPage = withAuth(() => {
 		<div>
 			<h1>Main page</h1>
       <p>This is secured route and it can't be accessed without authorization... in theory...</p>
+
       <br />
+
       <LinksTable links={links}/>
+      <Pagination />
 		</div>
 	)
 })

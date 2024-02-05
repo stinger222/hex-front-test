@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { useAppSelector } from "../../../../hooks"
+import { useAppSelector } from "../../../../hooks/store"
 
 interface IProps {
   id: string,

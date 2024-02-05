@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useAppSelector } from "../hooks"
+import { useAppSelector } from "../hooks/store"
 
 // Props passing is unnecessary for page components
 function withAuth(AuthorizedComponent: () => JSX.Element) {

@@ -1,4 +1,4 @@
-import { useAppDispatch } from "../../../hooks"
+import { useAppDispatch } from "../../../hooks/store"
 import { setSort, fetchLinks } from "../../../store/linkSlice"
 import { ILink } from "../../../types/store"
 import HeadCell from "./extensions/HeadCell"

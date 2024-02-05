@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { IRegisterFormData } from "../../../types/forms"
 import { confirmPasswordValidationRules, passwordValidationRules, usernameValidationRules } from "../../../constants/validation"
 import FormErrorMessage from "../../shared/FormErrorMessage"
-import { useAppDispatch } from "../../../hooks"
+import { useAppDispatch } from "../../../hooks/store"
 import { register as registerAC } from "../../../store/authSlice"
 
 const RegisterForm = () => {
@@ -21,8 +21,6 @@ const RegisterForm = () => {
     }
 
     dispatch(registerAC(values))
-
-    console.log(values ) // plug
   }
 
 	return (
