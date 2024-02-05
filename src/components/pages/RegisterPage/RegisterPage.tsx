@@ -1,4 +1,4 @@
-import RegisterForm from "../../smart/RegisterForm/RegisterForm"
+import RegisterForm from "../../forms/RegisterForm/RegisterForm"
 
 const RegisterPage = () => {
 	return (

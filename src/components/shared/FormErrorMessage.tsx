@@ -9,7 +9,7 @@ const FormErrorMessage = ({ errors }: {errors: FieldErrors<object>}) => {
 
   const errorToDisplay = firstErrorMessage && errors[firstErrorMessage]?.message || null
 
-  return errorToDisplay && <div className="text-red-500">{errorToDisplay}</div>
+  return errorToDisplay && <div className="text-red-500 md:text-xl md:mb-2">{errorToDisplay}</div>
 }
 
 export default FormErrorMessage

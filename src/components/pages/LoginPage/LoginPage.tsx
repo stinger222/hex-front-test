@@ -1,4 +1,4 @@
-import LoginForm from "../../smart/LoginForm/LoginForm"
+import LoginForm from "../../forms/LoginForm/LoginForm"
 
 const LoginPage = () => {
 	return (
