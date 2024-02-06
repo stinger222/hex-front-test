@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { IAuthSliceState } from "../types/store";
-import { LS_TOKEN_KEY } from "../constants/localStorage";
-import { ILoginFormData, IRegisterFormData } from "../types/forms";
-import { api } from "../api";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { IAuthSliceState, ILoginResponse } from "../types/store"
+import { LS_TOKEN_KEY } from "../constants/localStorage"
+import { ILoginFormData, IRegisterFormData } from "../types/forms"
+import { api } from "../api"
 
 const initialState: IAuthSliceState = {
   isAuthorized: !!localStorage.getItem(LS_TOKEN_KEY)
@@ -30,7 +30,7 @@ export const authorize = createAsyncThunk(
 	"auth/authorize",
 	async (data: ILoginFormData, thunkAPI) => {
 		try {
-      const response = await api.post<{access_token: string}>("api/login", data)
+      const response = await api.post<ILoginResponse>("api/login", data)
 
       localStorage.setItem(LS_TOKEN_KEY, response.data.access_token)
       thunkAPI.dispatch(logIn())
@@ -64,6 +64,6 @@ export const authSlice = createSlice({
   }
 })
 
-export const { logIn } = authSlice.actions
+export const { logIn, logOut } = authSlice.actions
 
 export default authSlice.reducer

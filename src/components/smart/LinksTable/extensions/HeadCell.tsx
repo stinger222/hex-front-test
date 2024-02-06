@@ -1,5 +1,5 @@
-import clsx from "clsx"
 import { useAppSelector } from "../../../../hooks/store"
+import { cn } from "../../../../utils"
 
 interface IProps {
   id: string,
@@ -13,7 +13,7 @@ const HeadCell = ({ onSort, id, className, children }: IProps) => {
   const isSorted = sortBy === id
 
   return (
-    <th id={id} onClick={onSort} className={clsx("cursor-pointer", className)}>
+    <th id={id} onClick={onSort} className={cn("cursor-pointer", className)}>
       {children}
       { isSorted && (sortDir === "asc" ? ' 🔼' : ' 🔽')}
     </th>

@@ -1,4 +1,4 @@
-import { ILink } from "../types/store";
+import { ILink } from "../types/store"
 
 export const MOCK_LINKS: ILink[] = [{
   "id": 137,

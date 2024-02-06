@@ -25,10 +25,10 @@ const MainPage = withAuth(() => {
 
 	return (
 		<div className="p-5 mx-auto max-w-4xl">
-      <div className="flex justify-between mb-7 pr-7">
+      <header className="flex justify-between mb-7 pr-7">
         <SqueezePopup />
         <Button variant="dark" onClick={handleLogout}>Log out</Button>
-      </div>
+      </header>
 
       <LinksTable links={links}/>
       <Pagination />

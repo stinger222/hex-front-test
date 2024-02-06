@@ -11,7 +11,7 @@ const Pagination: React.FC & IPaginationExtensions = () => {
   if (pages.length <= 1) return null
 
 	return (
-		<div className="flex justify-center my-12 gap-2 text-xl">
+		<nav className="flex justify-center my-12 gap-2 text-xl">
       <button className="pagination-nav" onClick={navigate.start}>
         {"<< start"}
       </button>
@@ -23,12 +23,12 @@ const Pagination: React.FC & IPaginationExtensions = () => {
           onClick={navigate.to}
           index={i}
         />
-        ))}
+      ))}
 
         <button className="pagination-nav" onClick={navigate.end}>
           {"end >>"}
         </button>
-		</div>
+		</nav>
 	)
 }
 

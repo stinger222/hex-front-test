@@ -16,7 +16,6 @@ const LinkSqueezingForm = () => {
   })
 
   const onSubmit = async ({ url }: { url: string }) => {
-    console.log("LinkSqueezingForm is submitted:\n", url)
     await dispatch(squeezeLink(url))
   }
 

@@ -1,5 +1,5 @@
 import { Control, ControllerRenderProps, RegisterOptions, useController } from "react-hook-form"
-import { clsx } from "clsx"
+import { cn } from "../../../utils"
 
 type CoreProps = {
   control: Control<any, any, any>,
@@ -23,7 +23,8 @@ const Input = ({ control, name, rules, className, ...rest }: Props) => {
 		<input
       {...field}
       {...rest }
-      className={clsx(baseStyles, className)}
+      autoComplete="off"
+      className={cn(baseStyles, className)}
     />
 	)
 }

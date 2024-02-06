@@ -1,5 +1,5 @@
-import clsx from "clsx"
 import { memo } from "react"
+import { cn } from "../../../../utils"
 
 interface IProps {
   isActive: boolean,
@@ -14,7 +14,7 @@ const Item = memo(({ isActive, onClick, index }: IProps) => {
   return (
     <button
       onClick={() => onClick(index)}
-      className={isActive ? clsx(baseStyles, activeStyles) : baseStyles}
+      className={isActive ? cn(baseStyles, activeStyles) : baseStyles}
     >
       {index + 1}
     </button>

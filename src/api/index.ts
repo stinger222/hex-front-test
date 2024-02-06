@@ -1,5 +1,5 @@
-import axios from "axios";
-import { LS_TOKEN_KEY } from "../constants/localStorage";
+import axios from "axios"
+import { LS_TOKEN_KEY } from "../constants/localStorage"
 
 export const api = axios.create({
   baseURL: "https://front-test.hex.team",
@@ -15,4 +15,14 @@ api.interceptors.request.use((config) => {
   return config
 })
 
-// TODO: Add response interceptor to catch 403, clear ls, and redirect to login page
+api.interceptors.response.use((config) => {
+  if (config.status === 401) {
+    console.log("Backend responded with 401 (Unauthorized)")
+    console.log("Redirecting to the login page...")
+
+    localStorage.removeItem(LS_TOKEN_KEY)
+    location.hash ="#/login"
+  }
+
+  return config
+})

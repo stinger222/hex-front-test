@@ -1,4 +1,4 @@
-import clsx from "clsx"
+import { cn } from "../../../utils"
 
 const vriants = {
   base: "px-2 py-1 rounded-md shadow-md outline-none active:scale-95 disabled:opacity-60 disabled:active:scale-100",
@@ -18,7 +18,7 @@ type Props = CoreProps & HtmlProps
 const Button = ({ variant = "default", className, children, ...rest }: Props) => {
 	return (
 		<button
-      className={clsx(vriants[variant], vriants.base, className)}
+      className={cn(vriants[variant], vriants.base, className)}
       {...rest}
     >
 			{children}

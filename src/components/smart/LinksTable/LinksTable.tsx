@@ -35,30 +35,32 @@ const LinksTable: React.FC<IProps> & ILinksTableExtensions = ({ links }) => {
   )
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <LinksTable.HeadCell id="short" onSort={handleSort} className="w-1/6 pl-12">
-            Short
-          </LinksTable.HeadCell>
-          <LinksTable.HeadCell id="target" onSort={handleSort}>
-            Long
-          </LinksTable.HeadCell>
-          <LinksTable.HeadCell id="counter" onSort={handleSort} className="w-1/12 text-center">
-            Clicks
-          </LinksTable.HeadCell>
-        </tr>
-      </thead>
-      <tbody>
-        {links?.map(row => (
-          <tr key={row.id}>
-            <LinksTable.ShortCell row={row}/>
-            <LinksTable.TargetCell row={row}/>
-            <td className="text-center">{row.counter}</td>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <LinksTable.HeadCell id="short" onSort={handleSort} className="w-1/6 pl-12">
+              Short
+            </LinksTable.HeadCell>
+            <LinksTable.HeadCell id="target" onSort={handleSort}>
+              Long
+            </LinksTable.HeadCell>
+            <LinksTable.HeadCell id="counter" onSort={handleSort} className="w-1/12 text-center">
+              Clicks
+            </LinksTable.HeadCell>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {links?.map(row => (
+            <tr key={row.id}>
+              <LinksTable.ShortCell row={row}/>
+              <LinksTable.TargetCell row={row}/>
+              <td className="text-center">{row.counter}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
   )
 }
 
