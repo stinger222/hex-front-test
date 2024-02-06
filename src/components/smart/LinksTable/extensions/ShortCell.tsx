@@ -12,7 +12,7 @@ const ShortCell = ({ row }: IProps) => {
   return (
     <td>
       <div className="flex justify-between items-center px-8">
-        <a href={`https://front-test.hex.team/s/${row.short}`} target="_blank" ref={contentRef}>
+        <a href={`${import.meta.env.VITE_BASE_URL}/s/${row.short}`} target="_blank" ref={contentRef}>
           {`s/${row.short}`}
         </a>
 

@@ -2,7 +2,7 @@ import axios from "axios"
 import { LS_TOKEN_KEY } from "../constants/localStorage"
 
 export const api = axios.create({
-  baseURL: "https://front-test.hex.team",
+  baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
     "Content-Type": "application/json"
   }

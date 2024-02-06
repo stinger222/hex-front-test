@@ -1,4 +1,4 @@
-import CopyIcon from "../../../../public/copy.svg?react"
+import CopyIcon from "../../../assets/copy.svg?react"
 import { cn } from "../../../utils"
 
 interface IProps {

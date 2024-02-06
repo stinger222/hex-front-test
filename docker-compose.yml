@@ -1,0 +1,26 @@
+versaion: "3.8"
+services:
+  fontend:
+    build:
+      context: .
+    container_name: "front-test-container-dev"
+    image: "front-test-image-dev"
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    env_file:
+      - .env
+    volumes:
+      - ./:/app/frontend:cached
+      - frontend_node_modules:/app/frontend/node_modules:delegated
+    command: "npm run dev-exposed"
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  frontend_node_modules:
