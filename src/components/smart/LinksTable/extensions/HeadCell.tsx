@@ -15,7 +15,7 @@ const HeadCell = ({ onSort, id, className, children }: IProps) => {
   return (
     <th id={id} onClick={onSort} className={clsx("cursor-pointer", className)}>
       {children}
-      { isSorted && (sortDir === "asc" ? '🔼' : '🔽')}
+      { isSorted && (sortDir === "asc" ? ' 🔼' : ' 🔽')}
     </th>
   )
 }

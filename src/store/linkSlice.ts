@@ -1,8 +1,7 @@
-
-import { RootState } from ".";
-import { api } from "../api";
+import { RootState } from "."
+import { api } from "../api"
 import { ILink, ILinkSliceState } from "../types/store"
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 const initialState: ILinkSliceState = {
   links: [],
@@ -58,6 +57,7 @@ export const squeezeLink = createAsyncThunk<string, string>(
           }
         })
 
+        thunkAPI.dispatch(fetchLinks())
         return thunkAPI.fulfillWithValue(response.data.short)
 
       // await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -105,7 +105,8 @@ export const linkSlice = createSlice({
     }),
     builder.addCase(squeezeLink.fulfilled, (state, action: PayloadAction<string>) => {
       state.squeezing.inProcess = false
-      state.squeezing.result = action.payload
+      // state.squeezing.result = env.base_url+action.payload
+      state.squeezing.result = `https://front-test.hex.team/s/${action.payload}`
     }),
     builder.addCase(squeezeLink.rejected, (state) => {
       state.squeezing.inProcess = false

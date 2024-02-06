@@ -10,7 +10,7 @@ interface IProps {
 }
 
 interface ILinksTableExtensions {
-  HeadeCell: typeof HeadCell,
+  HeadCell: typeof HeadCell,
   ShortCell: typeof ShortCell,
   TargetCell: typeof TargetCell
 }
@@ -27,21 +27,26 @@ const LinksTable: React.FC<IProps> & ILinksTableExtensions = ({ links }) => {
     dispatch(fetchLinks())
   }
 
-  if (!links.length) return <h1>Table is empty</h1>
+  if (!links.length) return (
+    <>
+      <h1 className="text-center mt-14 mb-3">Table is empty</h1>
+      <p className="text-center">Squeeze your first link by clicking the button above!</p>
+    </>
+  )
 
   return (
     <table>
       <thead>
         <tr>
-          <LinksTable.HeadeCell id="short" onSort={handleSort} className="w-1/6">
+          <LinksTable.HeadCell id="short" onSort={handleSort} className="w-1/6 pl-12">
             Short
-          </LinksTable.HeadeCell>
-          <LinksTable.HeadeCell id="target" onSort={handleSort}>
+          </LinksTable.HeadCell>
+          <LinksTable.HeadCell id="target" onSort={handleSort}>
             Long
-          </LinksTable.HeadeCell>
-          <LinksTable.HeadeCell id="counter" onSort={handleSort} className="w-1/12 text-center">
+          </LinksTable.HeadCell>
+          <LinksTable.HeadCell id="counter" onSort={handleSort} className="w-1/12 text-center">
             Clicks
-          </LinksTable.HeadeCell>
+          </LinksTable.HeadCell>
         </tr>
       </thead>
       <tbody>
@@ -57,7 +62,7 @@ const LinksTable: React.FC<IProps> & ILinksTableExtensions = ({ links }) => {
   )
 }
 
-LinksTable.HeadeCell = HeadCell
+LinksTable.HeadCell = HeadCell
 LinksTable.ShortCell = ShortCell
 LinksTable.TargetCell = TargetCell
 

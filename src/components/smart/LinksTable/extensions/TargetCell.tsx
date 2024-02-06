@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom";
-import { ILink } from "../../../../types/store";
+import { useRef } from "react"
+import { ILink } from "../../../../types/store"
+import CopyButton from "../../../shared/CopyButton/CopyButton"
 
 interface IProps {
   row: ILink,
-  className?: string
 }
 
-const TargetCell = ({ row, className }: IProps) => {
+const TargetCell = ({ row }: IProps) => {
+  const contentRef = useRef<HTMLAnchorElement>(null)
+
   return (
-    <td className={className}>
-      <Link to={row.target}> {row.target} </Link>
+    <td>
+      <div className="flex justify-between items-center gap-8">
+        <a href={row.target} target="_blank" ref={contentRef}>{row.target}</a>
+        <CopyButton value={contentRef.current?.textContent} className="shrink-0" />
+      </div>
     </td>
   )
 }
