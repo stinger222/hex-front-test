@@ -4,6 +4,7 @@ import { resetSqueezing } from "../../../store/linkSlice"
 import { useAppDispatch, useAppSelector } from "../../../hooks/store"
 import LinkSqueezingForm from "../../forms/LinkSqueezingForm/LinkSqueezingForm"
 import Popup from "../../shared/Popup/Popup"
+import Button from "../../shared/Button/Button"
 
 const SqueezePopup = () => {
   const dispatch = useAppDispatch()
@@ -17,19 +18,19 @@ const SqueezePopup = () => {
   }, [dispatch])
 
   return (
-    <div>
-      <button onClick={() => {setIsModalActive(true)}}>Open Popup</button>
+    <>
+      <Button onClick={() => {setIsModalActive(true)}}>Squeeze Link</Button>
       
       {
         isModalActive && (
           createPortal((
             <Popup handleClose={closePopup}>
-              <LinkSqueezingContent isSuccessful={squeezedSuccessfuly} shortLink={squeezing.result} />
+              <LinkSqueezingContent isDone={squeezedSuccessfuly} shortLink={squeezing.result} />
             </Popup>
           ), document.body)
         )
       }
-    </div>
+    </>
   )
 }
 
@@ -37,13 +38,13 @@ export default SqueezePopup
 
 
 interface ILinkSqueezingContentProps {
-  isSuccessful: boolean,
+  isDone: boolean,
   shortLink: string | null
 }
 
-const LinkSqueezingContent = ({ isSuccessful, shortLink}: ILinkSqueezingContentProps) => {
+const LinkSqueezingContent = ({ isDone, shortLink}: ILinkSqueezingContentProps) => {
   return (
-    isSuccessful ? <LinkSqueezingResult shortLink={shortLink as string}/> : <LinkSqueezingForm />
+    isDone ? <LinkSqueezingResult shortLink={shortLink as string}/> : <LinkSqueezingForm />
   )
 }
 
@@ -52,7 +53,6 @@ interface ILinkSqueezingResult {
 }
 
 const LinkSqueezingResult = ({ shortLink }: ILinkSqueezingResult) => {
-
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shortLink)
   }
@@ -66,7 +66,7 @@ const LinkSqueezingResult = ({ shortLink }: ILinkSqueezingResult) => {
         { shortLink }
       </a>
 
-      <button onClick={handleCopy}>Copy</button>
+      <Button onClick={handleCopy} className="text-lg">Copy</Button>
     </div>
   )
 }

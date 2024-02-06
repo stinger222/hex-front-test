@@ -6,10 +6,16 @@ import Loader from "../../shared/Loader/Loader"
 import LinksTable from "../../smart/LinksTable/LinksTable"
 import Pagination from "../../smart/Pagination/Pagination"
 import SqueezePopup from "../../smart/SqueezePopup/SqueezePopup"
+import { logOut } from "../../../store/authSlice"
+import Button from "../../shared/Button/Button"
 
 const MainPage = withAuth(() => {
   const dispatch = useAppDispatch()
   const { isFetching, links } = useAppSelector((state) => state.link)
+
+  const handleLogout = () => {
+    dispatch(logOut())
+  }
 
   useEffect(() => {
     dispatch(fetchLinks())
@@ -18,15 +24,11 @@ const MainPage = withAuth(() => {
   if (isFetching) return <Loader className="mt-32"/>
 
 	return (
-		<div>
-			<h1>Main page</h1>
-      <p>This is secured route and it can't be accessed without authorization... in theory...</p>
-
-      <br />
-
-      <SqueezePopup />
-
-      <br />
+		<div className="p-5 mx-auto max-w-4xl">
+      <div className="flex justify-between mb-7 pr-7">
+        <SqueezePopup />
+        <Button variant="dark" onClick={handleLogout}>Log out</Button>
+      </div>
 
       <LinksTable links={links}/>
       <Pagination />

@@ -56,10 +56,6 @@ form {
   @apply flex flex-col items-center p-3 w-96 border border-slate-200 rounded-md shadow-md md:w-[30rem] md:text-xl md:p-6
 }
 
-button {
-  @apply px-2 py-1 border rounded-md active:scale-95 disabled:opacity-60 disabled:active:scale-100
-}
-
 button.pagination-nav {
   @apply p-2 border border-gray-200 rounded-md font-medium text-sm leading-none
 }

@@ -9,6 +9,7 @@ import {
   passwordValidationRules,
   usernameValidationRules
 } from "../../../constants/validation"
+import Button from "../../shared/Button/Button"
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch()
@@ -35,11 +36,30 @@ const RegisterForm = () => {
       
       <FormErrorMessage errors={formState.errors}/>
 
-      <Input control={control} name="username" placeholder="Username" rules={usernameValidationRules}/>
-      <Input control={control} name="password" placeholder="Password" rules={passwordValidationRules}/>
-      <Input control={control} name="confirmPassword" placeholder="Confirm" rules={confirmPasswordValidationRules} />
+      <Input
+        control={control}
+        name="username"
+        placeholder="Username"
+        rules={usernameValidationRules}
+      />
 
-      <button className="mt-3 md:mt-5" type="submit">Submit</button>
+      <Input
+        control={control}
+        name="password"
+        type="password"
+        placeholder="Password"
+        rules={passwordValidationRules}
+        />
+
+      <Input
+        control={control}
+        name="confirmPassword"
+        type="password"
+        placeholder="Confirm"
+        rules={confirmPasswordValidationRules}
+      />
+
+      <Button className="mt-3 md:mt-5" type="submit">Submit</Button>
 		</form>
 	)
 }

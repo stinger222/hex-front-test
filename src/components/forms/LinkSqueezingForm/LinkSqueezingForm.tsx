@@ -4,6 +4,7 @@ import { squeezeLink } from "../../../store/linkSlice"
 import { useAppDispatch } from "../../../hooks/store"
 import Input from "../../shared/Input/Input"
 import FormErrorMessage from "../../shared/FormErrorMessage/FormErrorMessage"
+import Button from "../../shared/Button/Button"
 
 const LinkSqueezingForm = () => {
   const dispatch = useAppDispatch()
@@ -30,9 +31,9 @@ const LinkSqueezingForm = () => {
       
       <Input name="url" control={control} placeholder="URL" rules={urlValidationRules}/>
       
-      <button type="submit" className="mt-3" disabled={formState.isSubmitting}>
+      <Button type="submit" className="mt-3" disabled={formState.isSubmitting}>
         Squeeze
-      </button>
+      </Button>
 		</form>
 	)
 }
