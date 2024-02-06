@@ -1,4 +1,3 @@
-import { useRef } from "react"
 import { ILink } from "../../../../types/store"
 import CopyButton from "../../../shared/CopyButton/CopyButton"
 
@@ -7,16 +6,13 @@ interface IProps {
 }
 
 const ShortCell = ({ row }: IProps) => {
-  const contentRef = useRef<HTMLAnchorElement>(null)
+  const fullURL = `${import.meta.env.VITE_BACKEND_BASE_URL}/s/${row.short}`
 
   return (
     <td>
       <div className="flex justify-between items-center px-8">
-        <a href={`${import.meta.env.VITE_BASE_URL}/s/${row.short}`} target="_blank" ref={contentRef}>
-          {`s/${row.short}`}
-        </a>
-
-        <CopyButton value={contentRef.current?.href} className="shrink-0" />
+        <a href={fullURL} target="_blank">{`s/${row.short}`}</a>
+        <CopyButton value={fullURL} className="shrink-0" />
       </div>
     </td>
   )

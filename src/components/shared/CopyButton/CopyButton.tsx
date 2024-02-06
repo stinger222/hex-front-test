@@ -9,7 +9,7 @@ interface IProps {
 const CopyButton = ({ value, className }: IProps ) => {
   
   const handleCopy = async () => {
-    value && await navigator.clipboard.writeText(value)
+    value && await window.navigator.clipboard.writeText(value)
   }
 
 	return (

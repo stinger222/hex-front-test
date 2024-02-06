@@ -2,7 +2,7 @@ import axios from "axios"
 import { LS_TOKEN_KEY } from "../constants/localStorage"
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: import.meta.env.VITE_BACKEND_BASE_URL,
   headers: {
     "Content-Type": "application/json"
   }

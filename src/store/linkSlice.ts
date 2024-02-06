@@ -105,8 +105,7 @@ export const linkSlice = createSlice({
     }),
     builder.addCase(squeezeLink.fulfilled, (state, action: PayloadAction<string>) => {
       state.squeezing.inProcess = false
-      // state.squeezing.result = env.base_url+action.payload
-      state.squeezing.result = `${import.meta.env.VITE_BASE_URL}/s/${action.payload}`
+      state.squeezing.result = `${import.meta.env.VITE_BACKEND_BASE_URL}/s/${action.payload}`
     }),
     builder.addCase(squeezeLink.rejected, (state) => {
       state.squeezing.inProcess = false

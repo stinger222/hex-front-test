@@ -54,7 +54,7 @@ interface ILinkSqueezingResult {
 
 const LinkSqueezingResult = ({ shortLink }: ILinkSqueezingResult) => {
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(shortLink)
+    await window.navigator.clipboard.writeText(shortLink)
   }
 
   return (
