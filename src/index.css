@@ -57,9 +57,20 @@ form {
 }
 
 button {
-  @apply px-2 py-1 border rounded-md active:scale-95
+  @apply px-2 py-1 border rounded-md active:scale-95 disabled:opacity-60 disabled:active:scale-100
 }
 
 button.pagination-nav {
   @apply p-2 border border-gray-200 rounded-md font-medium text-sm leading-none
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DCDCDC;
+  border-radius: 50px;
+  border: 3.5px solid white;
 }
