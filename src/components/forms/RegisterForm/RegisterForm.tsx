@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { IRegisterFormData } from "../../../types/forms"
 import { useAppDispatch } from "../../../hooks/store"
 import { register } from "../../../store/authSlice"
-import FormErrorMessage from "../../shared/FormErrorMessage"
+import FormErrorMessage from "../../shared/FormErrorMessage/FormErrorMessage"
 import Input from "../../shared/Input/Input"
 import {
   confirmPasswordValidationRules,

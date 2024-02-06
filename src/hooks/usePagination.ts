@@ -23,13 +23,13 @@ export const usePagination = () => {
     end: () => handlePagination(totalPagesCount - 1)
   }
 
-  const totalPagesCount = Math.ceil((totalCount || 0) / pageLimit)
   const visiblePages: number[] = []
+  const totalPagesCount = Math.ceil((totalCount || 0) / pageLimit)
   const windowWidth = Math.min(9, totalPagesCount)
   const windowStartIndex =  Math.max(0, Math.min(totalPagesCount - 9, currentPage - 4))
 
   for (let i = 0; i < windowWidth; i++) {
-    visiblePages.push(i+windowStartIndex)
+    visiblePages.push(i +windowStartIndex)
   }
 
   return [navigate, visiblePages, currentPage] as [INavigate, number[], number]

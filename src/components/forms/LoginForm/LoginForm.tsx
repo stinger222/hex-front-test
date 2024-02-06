@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../../hooks/store"
 import { ILoginFormData } from "../../../types/forms"
 import { authorize } from "../../../store/authSlice"
 import Input from "../../shared/Input/Input"
-import FormErrorMessage from "../../shared/FormErrorMessage"
+import FormErrorMessage from "../../shared/FormErrorMessage/FormErrorMessage"
 
 const LoginForm = () => {
   const dispatch = useAppDispatch()

@@ -14,3 +14,5 @@ api.interceptors.request.use((config) => {
   token && (config.headers.Authorization = `Bearer ${token}`)
   return config
 })
+
+// TODO: Add response interceptor to catch 403, clear ls, and redirect to login page

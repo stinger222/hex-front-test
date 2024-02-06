@@ -1,7 +1,7 @@
 import { Control, ControllerRenderProps, RegisterOptions, useController } from "react-hook-form"
 import { clsx } from "clsx"
 
-type CustomProps = {
+type CoreProps = {
   control: Control<any, any, any>,
   name: string,
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>
@@ -9,7 +9,7 @@ type CustomProps = {
 
 type HtmlProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof ControllerRenderProps>
 
-type Props = CustomProps & HtmlProps
+type Props = CoreProps & HtmlProps
 
 const Input = ({ control, name, rules, className, ...rest }: Props) => {
 
