@@ -9,7 +9,11 @@ export type SortOrder = "asc_short" | "desc_short" | "asc_target" | "desc_target
 
 export interface ILinkSliceState {
   links: ILink[],
-  isLoading: boolean,
+  isFetching: boolean,
+  squeezing: {
+    inProcess: boolean,
+    result: string | null
+  },
   pagination: {
     page: number,
     pageLimit: number,
