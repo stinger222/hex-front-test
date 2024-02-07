@@ -1,6 +1,7 @@
+import bcrypt from "bcryptjs"
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { IAuthSliceState, ILoginResponse } from "../types/store"
-import { LS_TOKEN_KEY } from "../constants/localStorage"
+import { BCRYPT_SALT, LS_TOKEN_KEY } from "../constants/strings"
 import { ILoginFormData, IRegisterFormData } from "../types/forms"
 import { api } from "../api"
 
@@ -16,7 +17,7 @@ export const register = createAsyncThunk(
         .post<{username: string}>("api/register", undefined, {
           params: {
             username: data.username,
-            password: data.password
+            password: bcrypt.hashSync(data.password, BCRYPT_SALT)
           }
         })
 
@@ -30,7 +31,10 @@ export const authorize = createAsyncThunk(
 	"auth/authorize",
 	async (data: ILoginFormData, thunkAPI) => {
 		try {
-      const response = await api.post<ILoginResponse>("api/login", data)
+      const response = await api.post<ILoginResponse>("api/login", {
+        username: data.username,
+        password: bcrypt.hashSync(data.password, BCRYPT_SALT)
+      } as ILoginFormData)
 
       localStorage.setItem(LS_TOKEN_KEY, response.data.access_token)
       thunkAPI.dispatch(logIn())

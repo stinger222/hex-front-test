@@ -1,5 +1,5 @@
 import axios from "axios"
-import { LS_TOKEN_KEY } from "../constants/localStorage"
+import { LS_TOKEN_KEY } from "../constants/strings"
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_BASE_URL,
