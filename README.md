@@ -20,8 +20,9 @@ App "deployed" on [GitHub Pages](https://stinger222.github.io/hex-front-test/)
 
 ## Run Using Docker 
 ```sh
-docker-compose up
+docker-compose up    # Default port is 3000
 ```
+
 
 ## Or Locally 
 ```sh
