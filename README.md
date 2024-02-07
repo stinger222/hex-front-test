@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# Demo
+App "deployed" on [GitHub Pages](https://stinger222.github.io/hex-front-test/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Stack
+<b>▷ React <b/>
 
-Currently, two official plugins are available:
+<b>▷ Redux Toolkit </b>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<b>▷ Typescript</b>
 
-## Expanding the ESLint configuration
+<b>▷ TailwindCSS </b>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<b>▷ Docker </b>
 
-- Configure the top-level `parserOptions` property like this:
+<b>▷ React Hook Form </b>
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+<b>▷ Vite </b>
+
+# Development
+
+## Run Using Docker 
+```sh
+docker-compose up
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Or Locally 
+```sh
+npm install
+npm run dev
+```
